@@ -36,12 +36,11 @@ def method_3(y, h, t):
 
 def find_values(y, grid, h):
     print("Сетка с разбиением", h)
-    k = 0
     for t in grid:
         y_analytic = round(analytic(t), 14)
         error = abs(y - y_analytic)
-        print(k, round(t, 7), round(y, 14), y_analytic, '%.2E' % error)
-        y = method_2(y, h, t)  # Номер метода
+        print(round(t, 7), round(y, 14), y_analytic, '%.2E' % error)
+        y = method_1(y, h, t)  # Номер метода
 
 
-find_values(y0, grid_h1, h1)   # Вывод таблицы
+find_values(y0, grid_h1, h1)  # Вывод таблицы
