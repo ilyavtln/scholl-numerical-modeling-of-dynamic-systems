@@ -22,16 +22,16 @@ grid_h2 = np.arange(a, b + h2, h2)
 grid_h3 = np.arange(a, b + h3, h3)
 
 
-def method_1(y, h, t):
+def y_next(y, h, t):  # Нахождение y(n+1) c помощью явной схемы Эйлера
     return y + h * f(t, y)
 
 
+def method_1(y, h, t):
+    return y + h * f(t + h, y_next(y, h, t))
+
+
 def method_2(y, h, t):
-    return y + (h / 2) * (f(t, y) + f(t + h, y + h * f(t, y)))
-
-
-def method_3(y, h, t):
-    return y + h * f(t + (h / 2), y + (h / 2) * f(t, y))
+    return y + (h / 2) * (f(t, y) + f(t + h, y_next(y, h, t)))
 
 
 def find_values(y, grid, h):
