@@ -1,26 +1,29 @@
-import numpy as np
 from math import *
+import numpy as np
 
-h1, h2, h3 = 0.1, 0.05, 0.025  # размеры шагов
+h1, h2, h3 = 0.2, 0.1, 0.05  # размеры шагов
 
 
 def f(t, y):  # исходная функция
-    return 2 * t * y
+    return -25 * y + cos(t) + 25 * sin(t)
 
 
 def analytic(t):  # аналитическое значение
-    return exp(t ** 2)
+    return exp(-25 * t) * (1 + exp(25 * t) * sin(t))
 
 
-eps = 0.5e-15
+eps = 1
 a = 0
-b = 1
+b = 2
 y0 = 1.0  # начальное условие
 
 # Генерация массивов для сеток
 grid_h1 = np.arange(a, b + h1, h1)
 grid_h2 = np.arange(a, b + h2, h2)
 grid_h3 = np.arange(a, b + h3, h3)
+
+y = 1
+t = 0.5
 
 
 def method_1(y, grid, h):
@@ -52,5 +55,5 @@ def method_2(y, grid, h):
 
 
 # Вывод таблицы
-method_1(y0, grid_h3, h3)
-method_2(y0, grid_h3, h3)
+method_1(y0, grid_h1, h1)
+method_2(y0, grid_h1, h1)

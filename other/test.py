@@ -1,46 +1,10 @@
-import numpy as np
-from math import *
-
-h1, h2, h3 = 0.1, 0.05, 0.025  # размеры шагов
-
-
-def f(t, y):  # исходная функция
-    return 2 * t * y
-
-
-def analytic(t):  # аналитическое значение
-    return exp(t ** 2)
-
-
-a = 0
-b = 1
-y0 = 1.0  # начальное условие
-
-# Генерация массивов для сеток
-grid_h1 = np.arange(a, b + h1, h1)
-grid_h2 = np.arange(a, b + h2, h2)
-grid_h3 = np.arange(a, b + h3, h3)
-
-
-def method_1(y, h, t):
-    return y + h * f(t, y)
-
-
-def method_2(y, h, t):
-    return y + (h / 2) * (f(t, y) + f(t + h, y + h * f(t, y)))
-
-
-def method_3(y, h, t):
-    return y + h * f(t + (h / 2), y + (h / 2) * f(t, y))
-
-
-def find_values(y, grid, h):
-    print("Сетка с разбиением", h)
-    for t in grid:
-        y_analytic = round(analytic(t), 14)
-        error = abs(y - y_analytic)
-        print(round(t, 7), round(y, 14), y_analytic, '%.2E' % error)
-        y = method_1(y, h, t)  # Номер метода
-
-
-find_values(y0, grid_h1, h1)  # Вывод таблицы
+A = [47, 43, 128, 77, 89, 50, 63, 82,
+     66, 49, 116, 67, 105, 67, 101, 49, 98, 87, 106, 56, 32, 117, 63, 114, 2, 54, 19, 78, 95, 105, 39, 87,
+     38, 127, 68, 112, 73, 90, 105, 68, 27, 46, 61, 76, 81, 111, 21, 99, 61, 79, 86, 38, 79, 41, 137, 103,
+     27, 68, 95, 119, 88, 57, 85, 43, 56, 75, 109, 73, 49, 57, 39, 66, 84, 56, 39, 55, 86, 72, 78, 101, 107,
+     91, 57, 95, 88, 70, 59, 37, 90, 83, 77, 85, 118, 79, 36, 29, 84, 65, 47, 30]
+k = 0
+for i in A:
+    if i in range(112, 129):
+        k += 1
+print(k)
