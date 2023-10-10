@@ -117,7 +117,20 @@ def implicit_adams_3(h, eps):
         yn_1, yn = yn, yn_new
     return make_results(grid, analytical(h), numerical)
 
+def predictor_corrector(h):
+    numerical = []
+    grid = make_grid(h)
+    yn_3, yn_2, yn_1, yn = compute_first_elements(h, 4)
+    numerical.extend([yn_3, yn_2, yn_1, yn])
+    for tn in grid[3:]:
+        yn_pred = yn + (h/24)*(55*f(tn, yn)-59*f(tn-h, yn_1)+37*f(tn-2*h, yn_2)-9*f(tn-3*h, yn_3)) # explicit adams
+        yn_corr = yn + (h/24)*(9*f(tn+h, yn_pred)+19*f(tn, yn)-5*f(tn-h, yn_1)+f(tn-2*h, yn_2)) # implicit adams
+        numerical.append(yn_corr)
+        yn_3, yn_2, yn_1, yn = yn_2, yn_1, yn, yn_pred
+    return make_results(grid, analytical(h), numerical)
 
 
-print(implicit_adams_3(0.1, 1e-14))
+
+
+print(predictor_corrector(0.1))
 
