@@ -40,10 +40,6 @@ def find_explicit_4(y_n, y_n1, y_n2, y_n3, h, t):
     return y_n + (h / 24) * (55 * f(t, y_n) - 59 * f(t - h, y_n1) + 37 * f(t - 2 * h, y_n2) - 9 * f(t - 3 * h, y_n3))
 
 
-def find_implicit_3(y_n, y_n1, y_n2, h, t):
-    return y_n1 + h * ((5 / 12) + f(t + 2 * h, y_n2) + (2 / 3) * f(t + h, y_n1) - (1 / 12) * f(t, y_n))
-
-
 def explicit_3(y, grid, h):
     print("Явный метод Адамса 3-го порядка с разбиением", h)
     y_find = [y]  # добавляем первый элемент в массив
@@ -108,30 +104,46 @@ def implicit_3(y, grid, h):
 
     y_n2, y_n1, y_n = y_find[0], y_find[1], y_find[2]  # сохраняем в переменные найденные значения
 
-    # print("stope")
     for t in grid[2:-1]:
         x = y_n + (h / 12) * (23 * f(t, y_n) - 16 * f(t - h, y_n1) + 5 * f(t - 2 * h, y_n2))
-        x1 = y_n + (h / 12) * (5 * f(t + h, x) + 8 * f(t, y_n) - (f(t - h, y_n)))
-        while abs(x1 - x1) > eps:
+        x1 = y_n + (h / 12) * (5 * f(t + h, x) + 8 * f(t, y_n) - (f(t - h, y_n1)))
+        while abs(x1 - x) > eps:
             x = x1
-            x1 = y_n + (h / 12) * (5 * f(t + h, x) + 8 * f(t, y_n) - (f(t - h, y_n)))
+            x1 = y_n + (h / 12) * (5 * f(t + h, x) + 8 * f(t, y_n) - (f(t - h, y_n1)))
         y_n2, y_n1, y_n = y_n1, y_n, x1
         y_analytic = round(analytic(t + h), 14)
         error = abs(x1 - y_analytic)
         print(round(t + h, 14), round(x1, 14), y_analytic, '%.2E' % error)
 
-        # x = y_n1 + (h / 12) * (5 * f(t + h * 2, y_n2) + 8 * f(t + h, y_n1) - (f(t, y_n)))
-        # x1 = y_n1 + (h / 12) * (5 * f(t + h * 2, x) + 8 * f(t + h, y_n1) - (f(t, y_n)))
-        # # print(x, x1, "Test")
-        # while abs(x - x1) > eps:
-        #     x = x1
-        #     x1 = y_n1 + (h / 12) * (5 * f(t + h * 2, x) + 8 * f(t + h, y_n1) - (f(t, y_n)))
-        # y_n2, y_n1, y_n = x1, y_n2, y_n1  # сдвиг значений
-        # y_analytic = round(analytic(t + h), 14)
-        # error = abs(y_n2 - y_analytic)
-        # print(round(t + h, 14), round(y_n2, 14), y_analytic, '%.2E' % error)
 
+def implicit_4(y, grid, h):
+    print("Неявный метод Адамса 4-го порядка с разбиением", h)
+    y_find = [y]  # добавляем первый элемент в массив
+    y_analytic = round(analytic(0.0), 14)
+    error = abs(y - y_analytic)
+    print(round(0.0, 14), round(y, 14), y_analytic, '%.2E' % error)
+    for t in grid[:3]:
+        y_next = y + h * kn(y, t, h)  # находим новый y
+        y_analytic = round(analytic(t + h), 14)
+        error = abs(y_next - y_analytic)
+        print(round(t + h, 14), round(y_next, 14), y_analytic, '%.2E' % error)
+        y_find.append(y_next)  # добавляем первые найденные элементы в массив
+        y = y_next
+
+    y_n3, y_n2, y_n1, y_n = y_find[0], y_find[1], y_find[2], y_find[3]  # сохраняем в переменные найденные значения
+
+    for t in grid[3:-1]:
+        x = y_n + (h / 24) * (55 * f(t, y_n) - 59 * f(t - h, y_n1) + 37 * f(t - 2 * h, y_n2) - 9 * f(t - 3 * h, y_n3))
+        x1 = y_n + (h / 24) * (9 * f(t + h, x) + 19 * f(t, y_n) - 5 * (f(t - h, y_n1)) + f(t - h * 2, y_n2))
+        while abs(x1 - x) > eps:
+            x = x1
+            x1 = y_n + (h / 24) * (9 * f(t + h, x) + 19 * f(t, y_n) - 5 * (f(t - h, y_n1)) + f(t - h * 2, y_n2))
+        y_n3, y_n2, y_n1, y_n = y_n2, y_n1, y_n, x1
+        y_analytic = round(analytic(t + h), 14)
+        error = abs(x1 - y_analytic)
+        print(round(t + h, 14), round(x1, 14), y_analytic, '%.2E' % error)
 
 # explicit_3(y0, grid_h1, h1)
 # explicit_4(y0, grid_h1, h1)
-implicit_3(y0, grid_h1, h1)
+# implicit_3(y0, grid_h1, h1)
+# implicit_4(y0, grid_h1, h1)
