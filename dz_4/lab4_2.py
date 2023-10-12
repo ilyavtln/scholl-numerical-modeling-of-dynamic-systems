@@ -32,12 +32,11 @@ def kn(y, t, h):
     return (1 / 6) * (k1 + 2.0 * k2 + 2.0 * k3 + k4)
 
 
-def find_explicit_3(y_n, y_n1, y_n2, h, t):
-    return y_n + (h / 12) * (23 * f(t, y_n) - 16 * f(t - h, y_n1) + 5 * f(t - 2 * h, y_n2))
-
-
-def find_explicit_4(y_n, y_n1, y_n2, y_n3, h, t):
-    return y_n + (h / 24) * (55 * f(t, y_n) - 59 * f(t - h, y_n1) + 37 * f(t - 2 * h, y_n2) - 9 * f(t - 3 * h, y_n3))
+# Вывод значений таблицы
+def print_values(value, t, h):
+    y_analytic = round(analytic(t + h), 14)
+    error = abs(value - y_analytic)
+    print(round(t + h, 14), round(value, 14), y_analytic, '%.2E' % error)
 
 
 def explicit_3(y, grid, h):
@@ -48,24 +47,19 @@ def explicit_3(y, grid, h):
     print(round(0.0, 14), round(y, 14), y_analytic, '%.2E' % error)
     for t in grid[:2]:
         y_next = y + h * kn(y, t, h)  # находим новый y
-        y_analytic = round(analytic(t + h), 14)
-        error = abs(y_next - y_analytic)
-        print(round(t + h, 14), round(y_next, 14), y_analytic, '%.2E' % error)
+        print_values(y_next, t, h)  # вывод значений
         y_find.append(y_next)  # добавляем первые найденные элементы в массив
         y = y_next
 
     y_n2, y_n1, y_n = y_find[0], y_find[1], y_find[2]  # сохраняем в переменные найденные значения
+    t = grid[2]  # стартовые значения f
+    f_y_n, f_y_n1, f_y_n2 = f(t, y_n), f(t - h, y_n1), f(t - 2 * h, y_n2)
 
     for t in grid[2:-1]:
-        f_y_n = f(t, y_n)
-        f_y_n1 = f(t - h, y_n1)
-        f_y_n2 = f(t - 2 * h, y_n2)
-        print(f_y_n, f_y_n1, f_y_n2, "t")
         y_next = y_n + (h / 12) * (23 * f_y_n - 16 * f_y_n1 + 5 * f_y_n2)
-        y_analytic = round(analytic(t + h), 14)
-        error = abs(y_next - y_analytic)
-        # print(round(t + h, 14), round(y_next, 14), y_analytic, '%.2E' % error)
+        print_values(y_next, t, h)  # вывод значений
         y_n2, y_n1, y_n = y_n1, y_n, y_next  # сдвиг значений
+        f_y_n, f_y_n1, f_y_n2 = f(t + h, y_n), f_y_n, f_y_n1  # сдвиг значений f
 
 
 def explicit_4(y, grid, h):
@@ -76,20 +70,19 @@ def explicit_4(y, grid, h):
     print(round(0.0, 14), round(y, 14), y_analytic, '%.2E' % error)
     for t in grid[:3]:
         y_next = y + h * kn(y, t, h)  # находим новый y
-        y_analytic = round(analytic(t + h), 14)
-        error = abs(y_next - y_analytic)
-        print(round(t + h, 14), round(y_next, 14), y_analytic, '%.2E' % error)
+        print_values(y_next, t, h)  # вывод значений
         y_find.append(y_next)  # добавляем первые найденные элементы в массив
         y = y_next
 
     y_n3, y_n2, y_n1, y_n = y_find[0], y_find[1], y_find[2], y_find[3]  # сохраняем в переменные найденные значения
+    t = grid[3]  # стартовые значения f
+    f_y_n, f_y_n1, f_y_n2, f_y_n3 = f(t, y_n), f(t - h, y_n1), f(t - 2 * h, y_n2), f(t - 3 * h, y_n3)
 
     for t in grid[3:-1]:
-        y_next = find_explicit_4(y_n, y_n1, y_n2, y_n3, h, t)
-        y_analytic = round(analytic(t + h), 14)
-        error = abs(y_next - y_analytic)
-        print(round(t + h, 14), round(y_next, 14), y_analytic, '%.2E' % error)
+        y_next = y_n + (h / 24) * (55 * f_y_n - 59 * f_y_n1 + 37 * f_y_n2 - 9 * f_y_n3)
+        print_values(y_next, t, h)  # вывод значений
         y_n3, y_n2, y_n1, y_n = y_n2, y_n1, y_n, y_next  # сдвиг значений
+        f_y_n, f_y_n1, f_y_n2, f_y_n3 = f(t + h, y_n), f_y_n, f_y_n1, f_y_n2  # сдвиг значений f
 
 
 def implicit_3(y, grid, h):
@@ -100,24 +93,23 @@ def implicit_3(y, grid, h):
     print(round(0.0, 14), round(y, 14), y_analytic, '%.2E' % error)
     for t in grid[:2]:
         y_next = y + h * kn(y, t, h)  # находим новый y
-        y_analytic = round(analytic(t + h), 14)
-        error = abs(y_next - y_analytic)
-        print(round(t + h, 14), round(y_next, 14), y_analytic, '%.2E' % error)
+        print_values(y_next, t, h)
         y_find.append(y_next)  # добавляем первые найденные элементы в массив
         y = y_next
 
     y_n2, y_n1, y_n = y_find[0], y_find[1], y_find[2]  # сохраняем в переменные найденные значения
+    t = grid[2]  # стартовые значения f
+    f_y_n, f_y_n1, f_y_n2 = f(t, y_n), f(t - h, y_n1), f(t - 2 * h, y_n2)
 
     for t in grid[2:-1]:
-        x = find_explicit_3(y_n, y_n1, y_n2, h, t)
-        x1 = y_n + (h / 12) * (5 * f(t + h, x) + 8 * f(t, y_n) - (f(t - h, y_n1)))
+        x = y_n + (h / 12) * (23 * f_y_n - 16 * f_y_n1 + 5 * f_y_n2)
+        x1 = y_n + (h / 12) * (5 * f(t + h, x) + 8 * f_y_n - f_y_n1)
         while abs(x1 - x) > eps:
             x = x1
-            x1 = y_n + (h / 12) * (5 * f(t + h, x) + 8 * f(t, y_n) - (f(t - h, y_n1)))
-        y_n2, y_n1, y_n = y_n1, y_n, x1
-        y_analytic = round(analytic(t + h), 14)
-        error = abs(x1 - y_analytic)
-        print(round(t + h, 14), round(x1, 14), y_analytic, '%.2E' % error)
+            x1 = y_n + (h / 12) * (5 * f(t + h, x) + 8 * f_y_n - f_y_n1)
+        y_n2, y_n1, y_n = y_n1, y_n, x1  # сдвиг значений
+        f_y_n, f_y_n1, f_y_n2 = f(t + h, y_n), f_y_n, f_y_n1  # сдвиг значений f
+        print_values(x1, t, h)
 
 
 def implicit_4(y, grid, h):
@@ -128,24 +120,23 @@ def implicit_4(y, grid, h):
     print(round(0.0, 14), round(y, 14), y_analytic, '%.2E' % error)
     for t in grid[:3]:
         y_next = y + h * kn(y, t, h)  # находим новый y
-        y_analytic = round(analytic(t + h), 14)
-        error = abs(y_next - y_analytic)
-        print(round(t + h, 14), round(y_next, 14), y_analytic, '%.2E' % error)
+        print_values(y_next, t, h)
         y_find.append(y_next)  # добавляем первые найденные элементы в массив
         y = y_next
 
     y_n3, y_n2, y_n1, y_n = y_find[0], y_find[1], y_find[2], y_find[3]  # сохраняем в переменные найденные значения
+    t = grid[3]  # стартовые значения f
+    f_y_n, f_y_n1, f_y_n2, f_y_n3 = f(t, y_n), f(t - h, y_n1), f(t - 2 * h, y_n2), f(t - 3 * h, y_n3)
 
     for t in grid[3:-1]:
-        x = find_explicit_4(y_n, y_n1, y_n2, y_n3, h, t)
-        x1 = y_n + (h / 24) * (9 * f(t + h, x) + 19 * f(t, y_n) - 5 * (f(t - h, y_n1)) + f(t - h * 2, y_n2))
+        x = y_n + (h / 24) * (55 * f_y_n - 59 * f_y_n1 + 37 * f_y_n2 - 9 * f_y_n3)
+        x1 = y_n + (h / 24) * (9 * f(t + h, x) + 19 * f_y_n - 5 * f_y_n1 + f_y_n2)
         while abs(x1 - x) > eps:
             x = x1
-            x1 = y_n + (h / 24) * (9 * f(t + h, x) + 19 * f(t, y_n) - 5 * (f(t - h, y_n1)) + f(t - h * 2, y_n2))
-        y_n3, y_n2, y_n1, y_n = y_n2, y_n1, y_n, x1
-        y_analytic = round(analytic(t + h), 14)
-        error = abs(x1 - y_analytic)
-        print(round(t + h, 14), round(x1, 14), y_analytic, '%.2E' % error)
+            x1 = y_n + (h / 24) * (9 * f(t + h, x) + 19 * f_y_n - 5 * f_y_n1 + f_y_n2)
+        y_n3, y_n2, y_n1, y_n = y_n2, y_n1, y_n, x1  # сдвиг значений
+        f_y_n, f_y_n1, f_y_n2, f_y_n3 = f(t + h, y_n), f_y_n, f_y_n1, f_y_n2  # сдвиг значений f
+        print_values(x1, t, h)
 
 
 def prediction_correction_3(y, grid, h):
@@ -156,21 +147,20 @@ def prediction_correction_3(y, grid, h):
     print(round(0.0, 14), round(y, 14), y_analytic, '%.2E' % error)
     for t in grid[:2]:
         y_next = y + h * kn(y, t, h)  # находим новый y
-        y_analytic = round(analytic(t + h), 14)
-        error = abs(y_next - y_analytic)
-        print(round(t + h, 14), round(y_next, 14), y_analytic, '%.2E' % error)
+        print_values(y_next, t, h)
         y_find.append(y_next)  # добавляем первые найденные элементы в массив
         y = y_next
 
     y_n2, y_n1, y_n = y_find[0], y_find[1], y_find[2]  # сохраняем в переменные найденные значения
+    t = grid[2]  # стартовые значения f
+    f_y_n, f_y_n1, f_y_n2 = f(t, y_n), f(t - h, y_n1), f(t - 2 * h, y_n2)
 
     for t in grid[2:-1]:
-        y_pred = find_explicit_3(y_n, y_n1, y_n2, h, t)
-        y_corr = y_n + (h / 12) * (5 * f(t + h, y_pred) + 8 * f(t, y_n) - (f(t - h, y_n1)))
-        y_n2, y_n1, y_n = y_n1, y_n, y_corr
-        y_analytic = round(analytic(t + h), 14)
-        error = abs(y_corr - y_analytic)
-        print(round(t + h, 14), round(y_corr, 14), y_analytic, '%.2E' % error)
+        y_pred = y_n + (h / 12) * (23 * f_y_n - 16 * f_y_n1 + 5 * f_y_n2)
+        y_corr = y_n + (h / 12) * (5 * f(t + h, y_pred) + 8 * f_y_n - f_y_n1)
+        y_n2, y_n1, y_n = y_n1, y_n, y_corr  # сдвиг значений
+        f_y_n, f_y_n1, f_y_n2 = f(t + h, y_n), f_y_n, f_y_n1  # сдвиг значений f
+        print_values(y_corr, t, h)
 
 
 def prediction_correction_4(y, grid, h):
@@ -181,23 +171,22 @@ def prediction_correction_4(y, grid, h):
     print(round(0.0, 14), round(y, 14), y_analytic, '%.2E' % error)
     for t in grid[:3]:
         y_next = y + h * kn(y, t, h)  # находим новый y
-        y_analytic = round(analytic(t + h), 14)
-        error = abs(y_next - y_analytic)
-        print(round(t + h, 14), round(y_next, 14), y_analytic, '%.2E' % error)
+        print_values(y_next, t, h)
         y_find.append(y_next)  # добавляем первые найденные элементы в массив
         y = y_next
 
     y_n3, y_n2, y_n1, y_n = y_find[0], y_find[1], y_find[2], y_find[3]  # сохраняем в переменные найденные значения
+    t = grid[3]  # стартовые значения f
+    f_y_n, f_y_n1, f_y_n2, f_y_n3 = f(t, y_n), f(t - h, y_n1), f(t - 2 * h, y_n2), f(t - 3 * h, y_n3)
 
     for t in grid[3:-1]:
-        y_pred = find_explicit_4(y_n, y_n1, y_n2, y_n3, h, t)
-        y_corr = y_n + (h / 24) * (9 * f(t + h, y_pred) + 19 * f(t, y_n) - 5 * (f(t - h, y_n1)) + f(t - h * 2, y_n2))
-        y_n3, y_n2, y_n1, y_n = y_n2, y_n1, y_n, y_corr
-        y_analytic = round(analytic(t + h), 14)
-        error = abs(y_corr - y_analytic)
-        print(round(t + h, 14), round(y_corr, 14), y_analytic, '%.2E' % error)
+        y_pred = y_n + (h / 24) * (55 * f_y_n - 59 * f_y_n1 + 37 * f_y_n2 - 9 * f_y_n3)
+        y_corr = y_n + (h / 24) * (9 * f(t + h, y_pred) + 19 * f_y_n - 5 * f_y_n1 + f_y_n2)
+        y_n3, y_n2, y_n1, y_n = y_n2, y_n1, y_n, y_corr  # сдвиг значений
+        f_y_n, f_y_n1, f_y_n2, f_y_n3 = f(t + h, y_n), f_y_n, f_y_n1, f_y_n2  # сдвиг значений f
+        print_values(y_corr, t, h)
 
-explicit_3(y0, grid_h1, h1)
+# explicit_3(y0, grid_h1, h1)
 # explicit_4(y0, grid_h1, h1)
 # implicit_3(y0, grid_h1, h1)
 # implicit_4(y0, grid_h1, h1)
