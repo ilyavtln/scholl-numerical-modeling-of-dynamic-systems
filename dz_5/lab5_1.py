@@ -50,8 +50,8 @@ def f_q(p, q):
 
 
 def direct(grid, h):
-    p = [h]
-    q = [0.0]
+    p = [p1_0]
+    q = [q2_0]
     i = 0
     for t in grid:
         k1_p = f_p(t, q[i])
@@ -73,10 +73,31 @@ def direct(grid, h):
     return p, q
 
 
-p_res, q_res = direct(grid_h1, h1)
-plt.plot(q_res)
-plt.show()
-plt.plot(p_res)
-plt.show()
-# print(*p_res, sep=" ")
-# print(*q_res, sep=" ")
+def sequential(grid, h):
+    p = [p1_0]
+    q = [q2_0]
+    i = 0
+    for t in grid:
+        k1_p = f_p(t, q[i])
+        k2_p = f_p(t + h / 2, q[i] + (h / 2) * q[i])
+        k3_p = f_p(t + h / 2, q[i] + h * q[i])
+        k4_p = f_p(t + h, q[i] + h * q[i])
+
+        p.append(p[i] + (h / 6) * (k1_p + 2 * k2_p + 2 * k3_p + k4_p))
+
+        k1_q = f_q(p[i + 1], q[i])
+        k2_q = f_q(p[i + 1], q[i] + h / 2 * k1_q)
+        k3_q = f_q(p[i + 1], q[i] + h / 2 * k2_q)
+        k4_q = f_q(p[i + 1], q[i] + h * k3_q)
+
+        q.append(q[i] + (h / 6) * (k1_q + 2 * k2_q + 2 * k3_q + k4_q))
+
+        i += 1
+    return p, q
+
+# p_res, q_res = direct(grid_h1, h1)
+# p_res, q_res = sequential(grid_h1, h1)
+# plt.plot(p_res)
+# plt.show()
+# plt.plot(q_res)
+# plt.show()
