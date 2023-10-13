@@ -95,9 +95,24 @@ def sequential(grid, h):
         i += 1
     return p, q
 
+
+def print_t10(grid, n, p, q):
+    print(grid[n // 2], p[n // 2], q[n // 2])
+
+
+def show_plot(h, p, q, text):
+    plt.plot(p)
+    plt.title(f"{text} интегрирование с разбиением {h} \n p1(t)")
+    plt.show()
+    plt.plot(q)
+    plt.title(f"{text} интегрирование с разбиением {h} \n q2(t)")
+    plt.show()
+
+
 # p_res, q_res = direct(grid_h1, h1)
+# print_t10(grid_h1, len(grid_h1), p_res, q_res)
+# show_plot(h1, p_res, q_res, "Прямое")
+
 # p_res, q_res = sequential(grid_h1, h1)
-# plt.plot(p_res)
-# plt.show()
-# plt.plot(q_res)
-# plt.show()
+# print_t10(grid_h1, len(grid_h1), p_res, q_res)
+# show_plot(h1, p_res, q_res, "Последовательное")
