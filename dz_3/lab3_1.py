@@ -100,7 +100,7 @@ def runge_kutta(y, grid, h):
 
 
 # Вывод таблицы
-explicit_method(y0, grid_h1, h1)
+# explicit_method(y0, grid_h1, h1)
 # implicit_method(y0, grid_h1, h1)
 # modified_method(y0, grid_h1, h1)
 # trapezoid(y0, grid_h1, h1)
