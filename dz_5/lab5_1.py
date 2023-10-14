@@ -58,10 +58,10 @@ def direct(grid, h):
         k1_q = f_q(p[i], q[i])
 
         k2_p = f_p(t + h / 2, q[i] + (h / 2) * k1_q)
-        k2_q = f_q(p[i] + (h / 2) * k2_p, q[i] + (h / 2) * k1_q)
+        k2_q = f_q(p[i] + (h / 2) * k1_p, q[i] + (h / 2) * k1_q)
 
-        k3_p = f_p(t + h / 2, q[i] + h * k2_q)
-        k3_q = f_q(p[i] + h / 2 * k2_p, q[i] + h / 2 * k2_q)
+        k3_p = f_p(t + h / 2, q[i] + (h / 2) * k2_q)
+        k3_q = f_q(p[i] + h / 2 * k2_p, q[i] + (h / 2) * k2_q)
 
         k4_p = f_p(t + h, q[i] + h * k3_q)
         k4_q = f_q(p[i] + h * k3_p, q[i] + h * k3_q)
@@ -80,14 +80,14 @@ def sequential(grid, h):
     for t in grid:
         k1_p = f_p(t, q[i])
         k2_p = f_p(t + h / 2, q[i] + (h / 2) * q[i])
-        k3_p = f_p(t + h / 2, q[i] + h * q[i])
+        k3_p = f_p(t + h / 2, q[i] + (h / 2) * q[i])
         k4_p = f_p(t + h, q[i] + h * q[i])
 
         p.append(p[i] + (h / 6) * (k1_p + 2 * k2_p + 2 * k3_p + k4_p))
 
         k1_q = f_q(p[i + 1], q[i])
-        k2_q = f_q(p[i + 1], q[i] + h / 2 * k1_q)
-        k3_q = f_q(p[i + 1], q[i] + h / 2 * k2_q)
+        k2_q = f_q(p[i + 1], q[i] + (h / 2) * k1_q)
+        k3_q = f_q(p[i + 1], q[i] + (h / 2) * k2_q)
         k4_q = f_q(p[i + 1], q[i] + h * k3_q)
 
         q.append(q[i] + (h / 6) * (k1_q + 2 * k2_q + 2 * k3_q + k4_q))
@@ -97,7 +97,7 @@ def sequential(grid, h):
 
 
 def print_t10(grid, n, p, q):
-    print(grid[n // 2], p[n // 2], q[n // 2])
+    print(round(grid[n // 2], 15), round(p[n // 2], 15), round(q[n // 2], 15))
 
 
 def show_plot(h, p, q, text):
@@ -113,6 +113,6 @@ def show_plot(h, p, q, text):
 # print_t10(grid_h2, len(grid_h2), p_res, q_res)
 # show_plot(h2, p_res, q_res, "Прямое")
 
-p_res, q_res = sequential(grid_h2, h2)
-print_t10(grid_h2, len(grid_h2), p_res, q_res)
-show_plot(h2, p_res, q_res, "Последовательное")
+# p_res, q_res = sequential(grid_h2, h2)
+# print_t10(grid_h2, len(grid_h2), p_res, q_res)
+# show_plot(h2, p_res, q_res, "Последовательное")
