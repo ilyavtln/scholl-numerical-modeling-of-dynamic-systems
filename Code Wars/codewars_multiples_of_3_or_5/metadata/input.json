@@ -1,0 +1,30 @@
+{
+  "success" : true,
+  "languageName" : "python",
+  "label" : "Python",
+  "solutionId" : "652d32fb8462b20384a06594",
+  "icon" : "python",
+  "setup" : "def solution(number):\n    pass\n  ",
+  "exampleFixture" : "import codewars_test as test\nfrom solution import solution\n\n@test.describe(\"Sample tests\")\ndef sample_tests():\n    \n    @test.it(\"Should return 3 for n=4\")\n    def _():\n        test.assert_equals(solution(4), 3)\n        \n    @test.it(\"Should return 8 for n=6\")\n    def _():\n        test.assert_equals(solution(6), 8)\n    \n    @test.it(\"Should return 60 for n=16\")\n    def _():\n        test.assert_equals(solution(16), 60)\n    \n    @test.it(\"Should return 0 for n=3\")\n    def _():\n        test.assert_equals(solution(3), 0)\n    \n    @test.it(\"Should return 3 for n=5\")\n    def _():\n        test.assert_equals(solution(5), 3)\n    \n    @test.it(\"Should return 45 for n=15\")\n    def _():\n        test.assert_equals(solution(15), 45)\n    \n    @test.it(\"Should return 0 for n=0\")\n    def _():\n        test.assert_equals(solution(0), 0)\n    \n    @test.it(\"Should return 0 for n=-1\")\n    def _():\n        test.assert_equals(solution(-1), 0)\n    \n    @test.it(\"Should return 23 for n=10\")\n    def _():\n        test.assert_equals(solution(10), 23)\n        \n    @test.it(\"Should return 78 for n=20\")\n    def _():\n        test.assert_equals(solution(20), 78)\n\n    @test.it(\"Should return 9168 for n=200\")\n    def _():\n        test.assert_equals(solution(200), 9168)\n",
+  "workingCode" : null,
+  "workingFixture" : null,
+  "recentlyAttempted" : null,
+  "activeVersion" : "3.11",
+  "languageVersions" : [ {
+    "id" : "3.8",
+    "label" : "3.8",
+    "supported" : true
+  }, {
+    "id" : "3.10",
+    "label" : "3.10",
+    "supported" : true
+  }, {
+    "id" : "3.11",
+    "label" : "3.11",
+    "supported" : true
+  } ],
+  "testFramework" : "cw-2",
+  "path" : "/projects/652d32fa55b9df0065cfd5a0/",
+  "fixture" : "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\nmd3eEFr8K/MqVuWQNMSz0JY15bG4BknD\n--DhR6+yKGDHOl2qsjjXhPog==--u",
+  "package" : ""
+}

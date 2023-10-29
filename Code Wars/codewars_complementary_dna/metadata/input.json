@@ -1,0 +1,30 @@
+{
+  "success" : true,
+  "languageName" : "python",
+  "label" : "Python",
+  "solutionId" : "652d3519b3a4c4000f82d66b",
+  "icon" : "python",
+  "setup" : "def DNA_strand(dna):\n    # code here",
+  "exampleFixture" : "import codewars_test as test\nfrom solution import DNA_strand\n\n@test.describe(\"Fixed Tests\")\ndef fixed_tests():\n    @test.it('Basic Test Cases')\n    def basic_test_cases():     \n        test.assert_equals(DNA_strand(\"AAAA\"),\"TTTT\",\"String AAAA is\")\n        test.assert_equals(DNA_strand(\"ATTGC\"),\"TAACG\",\"String ATTGC is\")\n        test.assert_equals(DNA_strand(\"GTAT\"),\"CATA\",\"String GTAT is\")",
+  "workingCode" : null,
+  "workingFixture" : null,
+  "recentlyAttempted" : null,
+  "activeVersion" : "3.11",
+  "languageVersions" : [ {
+    "id" : "3.8",
+    "label" : "3.8",
+    "supported" : true
+  }, {
+    "id" : "3.10",
+    "label" : "3.10",
+    "supported" : true
+  }, {
+    "id" : "3.11",
+    "label" : "3.11",
+    "supported" : true
+  } ],
+  "testFramework" : "cw-2",
+  "path" : "/projects/652d35188462b20abea06327/",
+  "fixture" : "ULTESq70im7Rsy7YR7CHnDAp8DRCim4Q5tAMBsRi5BbHdBN+U9PZ2aPIbUSd\nZetEZuR+7eyFOjme50z3fYREdAzRZa6rby5/mx2Kfl/9b1876dK72nuEh1Oh\nDBGrKhg0YGhIFaMPmhNZtI4uXNKggAo/gNiDoeWCaFQNQyR4t29HWRRvlqFi\nNn7xGACXf11OTp9cz6TYFmYPGxhOSrVWf3LxGcIo/MJcXkGuC6cQHVdY8nL5\ntRlLqi/rgfUyHNPbww8jP/VZvyZpNluKbjjVyCxwtjYH1LLxJQgpIBSOk/5T\nWvTWt3FAGah5GTTbYzxox3xGLl/su0YADURT9oN2Y2E6P/WEgmYnKFXUEOh4\ngyvZuzIyGyScLDuGPUFMOf6vWugemR3OBHP8DRd/UU6Qb6Rr7IgcCYnbZgqH\nd99T9JBeA9UbcjI6PXkexaQ09UsNLIUuEIaD+gWXTyMjJ7Xy/Sfz0LbCHnQQ\nNy6q8DBeCi8xvGaE0lzrjWwKUqD1gK0HE4lwi3Y8QomfKaxahVbaThaEyKTZ\nmtCKAFXXeUdrffU/Dz+wuiXzqrFodTTj0jcISjKn6i5Grt1nFtzhl0dhRmHz\nhrVIw8t3ImCsbpkbL5fcaL0dvpof9DT06TvV9XERLdlW0tzNH+pwMTEaPW1F\nj5vWVvrXmf55KmZC/D7ZOM93TTHjsgQCX+CO6HOny8/HJFL+t7m3ENR3K7u9\nMkJ0z+fOshDvHYg3zaXq9FlKMpSmITdDrBKBU7Z5K5PVnufI0kPgerPd702T\nVX447E/TSgd2SHLoMSQ1Kp1zpn16p+6rfk3v+NN9ANvZkjUxeH5cQUlut4n8\nUDaMLwosym6YHiM7gZxCj9EVUL/qdDXeUFIc8fMmhTDBiKYlornv6sr+yjQl\nBebEh5Otk6SFhHLH+HuAAt+uekMezKtTlAjfVosRPBdFYc7QIIMGCNuVpmXR\nMvrJ+URdAqspr21C8vTpiLRsakgAtgDuv9D6VbbBI6f7CSy88VTg+f7APKYf\nLXIxDAnuR2Qg6B9ey4x1+J/F66aM5e1HaGfnyNAni32Cd8n/5VinuNeo9jkw\n/0LurWZMYou8Qg9ID0ueOAeVrsszz/LCJ5X3odBMhhBjf+2QBfaHJM/9UHa6\nWcKaiXHLcNgIFEf4qKtvuqruylSUksSAIwKJUTHA7ObrL4McQvJ1cK1H84Wr\nQV4v0ItyZp5tCpb33PvR7zsrtVND4ZjowHIu+/U3aalWX3sty4cMprIeFjHU\nKIc+bE6GAjkar2WEZzXhMnbkjy1K+IuEx3Tdy7+bLdaQWANFN1JtE/DOlbTi\n2WISOzIqpnGJQdRkytfslhfhc2RKCajXeqGVeHEMJrspK219KF+71BPtkE+t\nqFJktMEx/b/TetF4auxZr66l7eQhuIVi0uZ7O1kFp4l3sxKIvae2CrBdKWtz\nBUYi3L32KaXlLa2QpGNKHm4T4lQi6WkM4ZJkHbnJXIq6VUAHYj16TrH0I4sY\nnvjm+zjJYybBGDq1PYZuoL7vzaQKoBtMRtUMrqx7T6V/TwS2CQo0MNoxyIkn\nGFs2l0CsMxWEGJSfI879nQWOkqYOTFZuwTqhbIY2IPjgPWhI+dmBx6pcr7eC\nXIpcaliRKySuhU4f8Lw3sgHGg37QR5KDlUxG3jBs5hgWCLZNDtLA/DwJ8gpM\nUXCd3gxoycW9T36vhDLiw8sP8CUg/zzNAGck/5bMr1jzE4NEr+EkWyqbNE4j\nuwsXsNLNfadTrvWTT50l72tyy9refug=\n--DQOZxtUsCTFKdJjxJTt6Ig==--u",
+  "package" : ""
+}
