@@ -1,0 +1,19 @@
+{
+  "id" : "57cebe1dc6fdc20c57000ac9",
+  "name" : "Shortest Word",
+  "slug" : "shortest-word",
+  "url" : "https://www.codewars.com/kata/57cebe1dc6fdc20c57000ac9",
+  "category" : "reference",
+  "languages" : [ "javascript", "python", "php", "ruby", "csharp", "rust", "crystal", "coffeescript", "java", "haskell", "r", "fsharp", "go", "scala", "kotlin", "typescript", "cpp", "c", "nasm", "reason", "nim", "factor", "julia", "prolog", "swift", "elixir", "cobol", "clojure", "d", "cfml" ],
+  "path" : "/projects/652d35eff487b20bfa550af1/",
+  "selectedLanguage" : "python",
+  "description" : "Simple, given a string of words, return the length of the shortest word(s).\n\nString will never be empty and you do not need to account for different data types.\n",
+  "rank" : {
+    "id" : -7,
+    "name" : "7 kyu",
+    "color" : "white"
+  },
+  "tags" : [ "Fundamentals" ],
+  "workUrl" : "https://www.codewars.com/kata/57cebe1dc6fdc20c57000ac9/train/python",
+  "completed" : false
+}

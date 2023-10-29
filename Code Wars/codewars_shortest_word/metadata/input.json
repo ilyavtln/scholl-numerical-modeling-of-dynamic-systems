@@ -1,0 +1,30 @@
+{
+  "success" : true,
+  "languageName" : "python",
+  "label" : "Python",
+  "solutionId" : "652d35f0f20c7d004bf12e9a",
+  "icon" : "python",
+  "setup" : "def find_short(s):\n    # your code here\n    return l # l: shortest word length",
+  "exampleFixture" : "import codewars_test as test\nfrom solution import find_short\n\n@test.describe(\"Fixed Tests\")\ndef fixed_tests():\n    @test.it('Basic Test Cases')\n    def basic_test_cases():\n        test.assert_equals(find_short(\"bitcoin take over the world maybe who knows perhaps\"), 3)\n        test.assert_equals(find_short(\"turns out random test cases are easier than writing out basic ones\"), 3)\n        test.assert_equals(find_short(\"lets talk about javascript the best language\"), 3)\n        test.assert_equals(find_short(\"i want to travel the world writing code one day\"), 1)\n        test.assert_equals(find_short(\"Lets all go on holiday somewhere very cold\"), 2)   \n        test.assert_equals(find_short(\"Let's travel abroad shall we\"), 2)",
+  "workingCode" : null,
+  "workingFixture" : null,
+  "recentlyAttempted" : null,
+  "activeVersion" : "3.11",
+  "languageVersions" : [ {
+    "id" : "3.8",
+    "label" : "3.8",
+    "supported" : true
+  }, {
+    "id" : "3.10",
+    "label" : "3.10",
+    "supported" : true
+  }, {
+    "id" : "3.11",
+    "label" : "3.11",
+    "supported" : true
+  } ],
+  "testFramework" : "cw-2",
+  "path" : "/projects/652d35eff487b20bfa550af1/",
+  "fixture" : "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\niC8Ue5HkgS35NzqgxlLFtR9XcKWoaiXSCecv4w==\n--LcVi+0xyxBPODKtR2lNkXg==--u",
+  "package" : ""
+}

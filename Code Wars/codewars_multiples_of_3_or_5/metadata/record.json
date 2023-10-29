@@ -1,0 +1,19 @@
+{
+  "id" : "514b92a657cdc65150000006",
+  "name" : "Multiples of 3 or 5",
+  "slug" : "multiples-of-3-or-5",
+  "url" : "https://www.codewars.com/kata/514b92a657cdc65150000006",
+  "category" : "algorithms",
+  "languages" : [ "javascript", "coffeescript", "ruby", "clojure", "python", "csharp", "java", "haskell", "cpp", "elixir", "typescript", "php", "swift", "go", "rust", "c", "r", "nim", "fsharp", "scala", "lua", "shell", "powershell", "crystal", "nasm", "julia", "kotlin", "racket", "dart", "factor", "prolog", "raku", "cobol", "commonlisp", "d", "vb" ],
+  "path" : "/projects/652d32fa55b9df0065cfd5a0/",
+  "selectedLanguage" : "python",
+  "description" : "If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.\n\nFinish the solution so that it returns the sum of all the multiples of 3 or 5 **below** the number passed in. \n\n~~~if:c,cobol,commonlisp,cpp,csharp,dart,elixir,factor,fsharp,javascript,julia,kotlin,lua,nasm,php,prolog,python,raqcket,ruby,rust,shell,swift,typescript,vb\nAdditionally, if the number is negative, return 0.\n~~~\n\n**Note:** If the number is a multiple of **both** 3 and 5, only count it *once*.\n  \n***Courtesy of projecteuler.net** ([Problem 1](https://projecteuler.net/problem=1))*\n",
+  "rank" : {
+    "id" : -6,
+    "name" : "6 kyu",
+    "color" : "yellow"
+  },
+  "tags" : [ "Mathematics", "Algorithms" ],
+  "workUrl" : "https://www.codewars.com/kata/514b92a657cdc65150000006/train/python",
+  "completed" : false
+}

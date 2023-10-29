@@ -109,9 +109,9 @@ def show_plot(h, p, q, text):
     plt.show()
 
 
-# p_res, q_res = direct(grid_h2, h2)
-# print_t10(grid_h2, len(grid_h2), p_res, q_res)
-# show_plot(h2, p_res, q_res, "Прямое")
+p_res, q_res = direct(grid_h1, h1)
+print_t10(grid_h1, len(grid_h1), p_res, q_res)
+show_plot(h1, p_res, q_res, "Прямое")
 
 # p_res, q_res = sequential(grid_h2, h2)
 # print_t10(grid_h2, len(grid_h2), p_res, q_res)
